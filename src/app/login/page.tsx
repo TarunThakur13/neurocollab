@@ -24,7 +24,7 @@ export default function LoginPage() {
       formData.append('username', username);
       formData.append('password', password);
 
-      const defaultUrl = process.env.NODE_ENV === 'production' ? 'https://neurocollab-1.onrender.com' : 'http://localhost:8000';
+      const defaultUrl = (typeof window !== 'undefined' && window.location.hostname !== 'localhost') ? 'https://neurocollab-1.onrender.com' : 'http://localhost:8000';
       const API_URL = process.env.NEXT_PUBLIC_API_URL || defaultUrl;
       const res = await fetch(`${API_URL}/auth/token`, {
         method: 'POST',

@@ -15,7 +15,7 @@ interface UseAgentSocketProps {
   onComplete?: () => void;
 }
 
-const defaultWsUrl = process.env.NODE_ENV === 'production' ? 'wss://neurocollab-1.onrender.com/ws/chat' : 'ws://localhost:8000/ws/chat';
+const defaultWsUrl = (typeof window !== 'undefined' && window.location.hostname !== 'localhost') ? 'wss://neurocollab-1.onrender.com/ws/chat' : 'ws://localhost:8000/ws/chat';
 const WS_URL = process.env.NEXT_PUBLIC_WS_URL || defaultWsUrl;
 
 function generateId(): string {
