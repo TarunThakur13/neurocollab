@@ -27,7 +27,8 @@ export const useChatStore = create<ChatStore>()(
         if (!token) return;
         
         try {
-          const res = await fetch('http://localhost:8000/history', {
+          const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+          const res = await fetch(`${API_URL}/history`, {
             headers: { Authorization: `Bearer ${token}` }
           });
           if (res.ok) {
@@ -53,7 +54,8 @@ export const useChatStore = create<ChatStore>()(
         if (!token) return;
 
         try {
-          await fetch('http://localhost:8000/history', {
+          const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+          await fetch(`${API_URL}/history`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
