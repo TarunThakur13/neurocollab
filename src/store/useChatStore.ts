@@ -27,7 +27,8 @@ export const useChatStore = create<ChatStore>()(
         if (!token) return;
         
         try {
-          const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+          const defaultUrl = process.env.NODE_ENV === 'production' ? 'https://neurocollab-1.onrender.com' : 'http://localhost:8000';
+          const API_URL = process.env.NEXT_PUBLIC_API_URL || defaultUrl;
           const res = await fetch(`${API_URL}/history`, {
             headers: { Authorization: `Bearer ${token}` }
           });
@@ -54,7 +55,8 @@ export const useChatStore = create<ChatStore>()(
         if (!token) return;
 
         try {
-          const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+          const defaultUrl = process.env.NODE_ENV === 'production' ? 'https://neurocollab-1.onrender.com' : 'http://localhost:8000';
+          const API_URL = process.env.NEXT_PUBLIC_API_URL || defaultUrl;
           await fetch(`${API_URL}/history`, {
             method: 'POST',
             headers: {
