@@ -131,7 +131,7 @@ _MODEL_CASCADE = [
     "mixtral-8x7b-32768",             # 32k context  - Excellent at long prompts
     "llama3-70b-8192",                # 8k context   - Strong reasoning
     "gemma2-9b-it",                   # 8k context   - Good logic fallback
-    "llama-3.1-8b-instant",           # 128k context - Highest rate limit threshold
+    "llama3-8b-8192",                 # 8k context - Highest rate limit threshold
 ]
 
 def _router_llm():
